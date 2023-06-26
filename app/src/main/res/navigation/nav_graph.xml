@@ -1,0 +1,72 @@
+<!-- res/navigation/nav_graph.xml -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.taskmanager.ui.notes.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_todo"
+        android:name="com.example.taskmanager.ui.notes.TodoFragment"
+        android:label="ToDo"
+        tools:layout="@layout/fragment_todo" >
+        <action
+            android:id="@+id/action_navigation_todo_to_navigation_saveOrDelete"
+            app:destination="@id/navigation_saveOrDelete" />
+
+        <argument
+            android:name="note"
+            android:defaultValue="@null"
+            app:argType="com.example.taskmanager.model.Note"
+            app:nullable="true">
+        </argument>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_message"
+        android:name="com.example.taskmanager.ui.notes.MessageFragment"
+        android:label="Message"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
+        android:id="@+id/navigation_call"
+        android:name="com.example.taskmanager.ui.notes.CallFragment"
+        android:label="Call"
+        tools:layout="@layout/fragment_call" />
+
+    <fragment
+        android:id="@+id/navigation_progress"
+        android:name="com.example.taskmanager.ui.notes.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress" />
+
+    <fragment
+        android:id="@+id/navigation_saveOrDelete"
+        android:name="com.example.taskmanager.ui.notes.SaveOrDeleteFragment"
+        android:label="fragment_save_or_delete"
+        tools:layout="@layout/fragment_save_or_delete">
+        <action
+            android:id="@+id/action_navigation_saveOrDelete_to_navigation_todo"
+            app:destination="@id/navigation_todo" />
+
+        <argument
+            android:name="note"
+            android:defaultValue="@null"
+            app:argType="com.example.taskmanager.model.Note"
+            app:nullable="true">
+        </argument>
+
+    </fragment>
+
+
+</navigation>

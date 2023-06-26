@@ -1,0 +1,23 @@
+<!-- res/menu/bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/navigation_todo"
+        android:title="ToDo"
+        android:icon="@drawable/ic_todo" />
+    <item
+        android:id="@+id/navigation_message"
+        android:title="Message"
+        android:icon="@drawable/ic_message" />
+    <item
+        android:id="@+id/navigation_call"
+        android:title="Call"
+        android:icon="@drawable/ic_call" />
+    <item
+        android:id="@+id/navigation_progress"
+        android:title="Progress"
+        android:icon="@drawable/ic_progressbar"/>
+</menu>
