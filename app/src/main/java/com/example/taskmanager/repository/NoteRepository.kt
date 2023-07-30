@@ -6,7 +6,6 @@ import com.example.taskmanager.model.Note
 
 // NoteRepository.kt
 class NoteRepository(private val db:NoteDatabase) {
-
     fun getNotes() =db.getNoteDao().getAllNotes()
 
     fun searchNote(query:String)=db.getNoteDao().searchNote(query)
