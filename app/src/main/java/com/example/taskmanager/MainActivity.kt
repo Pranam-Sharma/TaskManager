@@ -12,8 +12,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.taskmanager.database.NoteDatabase
 import com.example.taskmanager.database.newsdb.NewsDatabase
 import com.example.taskmanager.databinding.ActivityMainBinding
+import com.example.taskmanager.model.`interface`.NewsApiService
 import com.example.taskmanager.repository.NewsRepository
 import com.example.taskmanager.repository.NoteRepository
+import com.example.taskmanager.utils.RetrofitNewsClient
 import com.example.taskmanager.viewmodel.NoteViewModel
 import com.example.taskmanager.viewmodel.NoteViewModelFactory
 import com.example.taskmanager.viewmodel.newsviewmodel.NewsViewModelFactory
@@ -40,13 +42,20 @@ class MainActivity : AppCompatActivity() {
             val noteViewModelProviderfactory=NoteViewModelFactory(noteRepository)
             noteActivityViewModel=ViewModelProvider(this,noteViewModelProviderfactory)[NoteViewModel::class.java]
 
+
+            val apiServices: NewsApiService = RetrofitNewsClient.create()
+            val newsRepository=NewsRepository(NewsDatabase(this),apiServices)
+            val newsViewModelProviderfactory= NewsViewModelFactory(newsRepository)
+            newsViewModels= ViewModelProvider(this,newsViewModelProviderfactory)[NewsViewModels::class.java]
+
         }catch (e:Exception){
             Log.d("TAG","Error")
         }
 
 //        try {
 //            //NewsViewModel initialization
-//            val newsRepository=NewsRepository(NewsDatabase(this))
+//            val apiServices: NewsApiService = RetrofitNewsClient.create()
+//            val newsRepository=NewsRepository(NewsDatabase(this),apiServices)
 //            val newsViewModelProviderfactory= NewsViewModelFactory(newsRepository)
 //            newsViewModels= ViewModelProvider(this,newsViewModelProviderfactory)[NewsViewModels::class.java]
 //        }catch (e:Exception){

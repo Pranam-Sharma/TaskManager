@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.taskmanager.R
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 
 class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     private var newsList: List<Article> = emptyList()
+    var onItemClick: ((Article) -> Unit)? = null
 
     // Create the ViewHolder class
    inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -39,10 +41,8 @@ class NewsAdapter(private val context: Context) : RecyclerView.Adapter<NewsAdapt
         holder.title.text = article.title
          holder.date.text=article.publishedAt
         Glide.with(context).load(article.urlToImage).into(holder.image)
-       holder.itemView.setOnClickListener{
-           val url=article.url
-           val webViewFragment=WebViewFragment.newInstance(url)
-           val fragmentManager = holder.itemView.context
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(article)
        }
     }
 

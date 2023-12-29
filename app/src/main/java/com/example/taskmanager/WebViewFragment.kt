@@ -2,7 +2,9 @@ package com.example.taskmanager
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.databinding.FragmentWebViewBinding
 
@@ -19,18 +21,19 @@ class WebViewFragment : Fragment(R.layout.fragment_web_view) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentWebViewBinding.bind(view)
         webView=binding.tvWebView
-        val url= arguments?.getString(KEY_URL)
+        webView.settings.javaScriptEnabled
+        webView.settings.loadWithOverviewMode = true
+        webView.settings.useWideViewPort = true
+        webView.settings.domStorageEnabled = true
 
-
-    }
-    companion object{
-        private const val KEY_URL="url"
-        fun newInstance(url:String):WebViewFragment{
-            val fragment = WebViewFragment()
-            val bundle=Bundle()
-            bundle.putString(KEY_URL,url)
-            fragment.arguments=bundle
-            return fragment
+        webView.webViewClient= object :WebViewClient() {
+            override fun shouldOverrideUrlLoading(
+                view: WebView?,
+                request: WebResourceRequest?
+            ): Boolean {
+                return super.shouldOverrideUrlLoading(view, request)
+                view?.loadUrl(request?.url.toString())
+            }
         }
     }
 }

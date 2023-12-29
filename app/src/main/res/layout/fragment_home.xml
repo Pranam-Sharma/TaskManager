@@ -5,15 +5,15 @@
     android:background="#E1DDDD"
     android:layout_height="match_parent">
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/tvProgress"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <ProgressBar
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Toolbar -->
 
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/tabLayout"
+        app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,19 +43,6 @@
             android:src="@drawable/ic_round_arrow_back_24" />
 
         <ImageView
-            android:id="@+id/searchNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="60dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="5dp"
-            android:src="@drawable/ic_round_search_24" />
-
-        <ImageView
             android:id="@+id/saveNews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,30 +57,72 @@
             android:visibility="visible" />
     </RelativeLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:tabIndicatorHeight="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardElevation="25dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:tabBackground="@color/light_grey"
-        app:tabMode="scrollable"
-        app:tabGravity="fill"
-        app:tabSelectedTextColor="@color/black" />
+        >
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        <EditText
+            android:id="@+id/searchNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:maxLines="1"
+            android:inputType="text"
+            android:hint="Search News"
+            android:textColor="@color/black"
+            android:padding="12dp"
+            android:backgroundTint="#00000000"/>
+
+        <ImageView
+            android:id="@+id/searNewsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_round_search_24" />
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/recyclerLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout" >
+        app:layout_constraintTop_toBottomOf="@id/cardView">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"/>
 
+        <ImageView
+            android:id="@+id/errLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/errorimage"
+            android:background="#ffffff"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
-    </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

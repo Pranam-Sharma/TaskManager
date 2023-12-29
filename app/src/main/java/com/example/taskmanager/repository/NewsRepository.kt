@@ -10,13 +10,11 @@ import retrofit2.Response
 
 class NewsRepository(private var newsDb:NewsDatabase, private val apiService: NewsApiService) {
 
-    suspend fun getTopHeadlines(country: String, category: String): Response<NewsResponse> {
+    suspend fun getTopHeadlines(query: String): Response<NewsResponse> {
 
-           return apiService.getTopHeadlines(country, category)
+           return apiService.getTopHeadlines(query)
 
         }
 
     fun getNews()=newsDb.geNewsDao().getAllNews()
-    fun searchNews(query:String)=newsDb.geNewsDao().searchNews(query)
-    suspend fun deleteNews(article: Article) =newsDb.geNewsDao().deleteNews(article)
 }
