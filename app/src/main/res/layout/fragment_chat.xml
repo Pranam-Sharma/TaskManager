@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E1DDDD"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/chatLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/searhLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/questionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="11dp"
+            android:elevation="7dp"
+            android:visibility="gone"
+            android:layout_gravity="end"
+            android:layout_marginEnd="7dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/grey">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/google_sans_medium"
+                android:textSize="20dp"
+                android:padding="5dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/answerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="11dp"
+            android:elevation="10dp"
+            android:visibility="gone"
+            android:layout_gravity="start"
+            android:layout_marginEnd="70dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="7dp">
+            <TextView
+                android:id="@+id/answer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/google_sans_medium"
+                android:textSize="20dp"
+                android:hint="Please Wait..."
+                android:background="@color/dark_grey"
+                android:textColorHint="@color/light_grey"
+                android:textColor="@color/white"
+                android:padding="5dp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/searhLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
+
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="70dp"
+              android:layout_gravity="bottom"
+              android:orientation="horizontal">
+              <com.google.android.material.card.MaterialCardView
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:elevation="15dp"
+                  app:cardCornerRadius="20dp"
+                  android:layout_marginTop="7dp"
+                  android:layout_marginEnd="7dp"
+                  android:layout_marginBottom="10dp"
+                  android:layout_marginStart="7dp">
+
+                  <EditText
+                      android:id="@+id/tvQuestion"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_marginEnd="100dp"
+                      android:background="#00000000"
+                      android:hint="Ask a question"
+                      android:padding="10dp"/>
+
+                  <Button
+                      android:id="@+id/searchButton"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="end"
+                      android:background="@drawable/roundadbutton"
+                      android:text="Search"
+                      android:textAllCaps="false"/>
+              </com.google.android.material.card.MaterialCardView>
+          </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

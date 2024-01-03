@@ -33,10 +33,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_message"
-        android:name="com.example.taskmanager.ui.notes.MessageFragment"
-        android:label="Message"
-        tools:layout="@layout/fragment_message" />
+        android:id="@+id/navigation_chat"
+        android:name="com.example.taskmanager.ui.notes.ChatFragment"
+        android:label="Chat"
+        tools:layout="@layout/fragment_chat" />
 
     <fragment
         android:id="@+id/navigation_call"

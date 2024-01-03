@@ -9,8 +9,8 @@
         android:title="ToDo"
         android:icon="@drawable/ic_todo" />
     <item
-        android:id="@+id/navigation_message"
-        android:title="Message"
+        android:id="@+id/navigation_chat"
+        android:title="Chat"
         android:icon="@drawable/ic_message" />
     <item
         android:id="@+id/navigation_call"
